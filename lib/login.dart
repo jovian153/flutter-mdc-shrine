@@ -30,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
-                filled: true,
                 labelText: 'Username',
               ),
             ),
@@ -38,16 +37,22 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               decoration: const InputDecoration(
-                filled: true,
                 labelText: 'Password',
               ),
               obscureText: true,
             ),
+            const SizedBox(height: 12.0),
             OverflowBar(
               alignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
                   child: const Text('CANCEL'),
+                  style: TextButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.secondary,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
+                  ),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
@@ -55,6 +60,14 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 ElevatedButton(
                   child: const Text('NEXT'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    elevation: 8.0,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
